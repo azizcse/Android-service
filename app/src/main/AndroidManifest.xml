@@ -31,7 +31,14 @@
             android:permission="android.permission.BIND_JOB_SERVICE">
 
         </service>
-        <activity android:name=".BindActivity"/>
+
+        <service
+            android:name=".BindServiceWithAidl"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity android:name=".BindActivity" />
+        <activity android:name=".ActivityAidl" />
     </application>
 
 </manifest>

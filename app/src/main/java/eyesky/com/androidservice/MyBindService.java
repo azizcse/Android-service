@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class MyBindService extends Service {
-    public static final String TAG = "CondRunner";
+    public static final String TAG = MyBindService.class.getName();
     private final Binder mBinder = new ServiceBinder();
     BindActivity bindActivity;
     public MyBindService() {
