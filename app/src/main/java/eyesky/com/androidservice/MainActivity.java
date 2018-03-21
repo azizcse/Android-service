@@ -16,7 +16,7 @@ import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    MyBindService myBindService;
+
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -24,20 +24,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("CodeRunner", "Received message in receiver");
         }
     };
-    ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            MyBindService.ServiceBinder serviceBinder = (MyBindService.ServiceBinder) iBinder;
-            myBindService = serviceBinder.getService();
-            Log.i("CodeRunner", "onServiceConnected");
-        }
 
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-            myBindService = null;
-            Log.i("CodeRunner", "onServiceDisconnected");
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +32,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void onBindService(View view){
+        Intent intent = new Intent(this, BindActivity.class);
+        startActivity(intent);
+    }
+
     public void onIntentService(View view) {
         MyIntentService.startActionFoo(MainActivity.this, "Paran1", "param2");
 
     }
 
-    public void onBindService(View view) {
-
-    }
-
-    public void onStartService(View view) {
-
-    }
     public void onStartJobService(View view) {
         JobScheduler jobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
         JobInfo jobInfo = new JobInfo.Builder(101,new ComponentName(this, MyJobService.class))
@@ -64,21 +49,7 @@ public class MainActivity extends AppCompatActivity {
         jobScheduler.schedule(jobInfo);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = new Intent(this, MyBindService.class);
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-        Log.i("CodeRunner", "Service bind");
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("CodeRunner", "Service Unbind");
-        unbindService(serviceConnection);
-
-    }
 
     @Override
     protected void onResume() {
@@ -90,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
 

@@ -9,7 +9,7 @@ import android.util.Log;
 public class MyBindService extends Service {
     public static final String TAG = "CondRunner";
     private final Binder mBinder = new ServiceBinder();
-
+    BindActivity bindActivity;
     public MyBindService() {
         Log.i(TAG, "Service created");
     }
@@ -18,6 +18,12 @@ public class MyBindService extends Service {
     public IBinder onBind(Intent intent) {
         Log.i(TAG, "onBind");
         return mBinder;
+    }
+
+    public void updateTime() {
+        if(bindActivity != null){
+            bindActivity.updateTimeLog(System.currentTimeMillis());
+        }
     }
 
     class ServiceBinder extends Binder {

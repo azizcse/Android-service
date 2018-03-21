@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidService</string>
+    <string name="intent_service">Hello</string>
 </resources>

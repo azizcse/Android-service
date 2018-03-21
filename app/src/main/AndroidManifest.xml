@@ -31,6 +31,7 @@
             android:permission="android.permission.BIND_JOB_SERVICE">
 
         </service>
+        <activity android:name=".BindActivity"/>
     </application>
 
 </manifest>
