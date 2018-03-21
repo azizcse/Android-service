@@ -33,7 +33,7 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:onClick="onStartAidlService"
-        android:text="Start Service"/>
+        android:text="AIDL Service"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -43,6 +43,15 @@
         android:layout_gravity="center"
         android:onClick="onStartJobService"
         android:text="Job Service"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:onClick="onStartJobService"
+        android:text="Notification"/>
 
 
 </LinearLayout>
