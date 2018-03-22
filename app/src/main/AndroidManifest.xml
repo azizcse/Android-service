@@ -38,6 +38,11 @@
 
         <activity android:name=".BindActivity" />
         <activity android:name=".ActivityAidl" />
+        <activity android:name=".ActivityMessengerBind" />
+
+        <service
+            android:name=".MessageBindService"
+            android:enabled="true" />
     </application>
 
 </manifest>

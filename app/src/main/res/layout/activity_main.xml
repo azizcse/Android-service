@@ -50,6 +50,15 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
+        android:onClick="onStartMessengerBinder"
+        android:text="BindByMessenger"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
         android:onClick="onStartJobService"
         android:text="Notification"/>
 

@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityAidl.class);
         startActivity(intent);
     }
+public void onStartMessengerBinder(View view){
+        Intent intent = new Intent(this, ActivityMessengerBind.class);
+        startActivity(intent);
+    }
 
     public void onStartJobService(View view) {
         /*JobScheduler jobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
