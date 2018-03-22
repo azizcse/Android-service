@@ -43,6 +43,7 @@
         <service
             android:name=".MessageBindService"
             android:enabled="true" />
+        <activity android:name=".NotificationActivity"/>
     </application>
 
 </manifest>

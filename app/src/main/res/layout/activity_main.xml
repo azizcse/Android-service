@@ -59,7 +59,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:onClick="onStartJobService"
+        android:onClick="onOpenNotifivcationActivity"
         android:text="Notification"/>
 
 

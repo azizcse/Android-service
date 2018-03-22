@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="60dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:onClick="onDefaultNotification"
+            android:text="Default Notification" />
+
+        <Button
+            android:id="@+id/button_bundled_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onHeadsUpNotification"
+            android:padding="16dp"
+            android:text="Show Heads Up Notification" />
+
+        <Button
+            android:id="@+id/button_remote_input_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Default Notification" />
+
+        <Button
+            android:id="@+id/button_custom_content_view_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Default Notification" />
+
+        <Button
+            android:id="@+id/button_custom_content_big_view_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Default Notification" />
+
+        <Button
+            android:id="@+id/button_custom_normal_and_big_content_views_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Default Notification" />
+
+        <Button
+            android:id="@+id/button_custom_media_content_view_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Default Notification" />
+
+        <Button
+            android:id="@+id/button_heads_up_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Default Notification" />
+
+        <Button
+            android:id="@+id/button_custom_layout_heads_up_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Default Notification" />
+
+    </LinearLayout>
+
+</ScrollView>

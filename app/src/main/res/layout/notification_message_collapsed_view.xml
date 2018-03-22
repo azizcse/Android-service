@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_notify_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="1dp"
+            android:paddingTop="3dp">
+
+            <ImageView
+                android:id="@+id/image_flare_red_circle"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginTop="2dp"
+                />
+
+            <TextView
+                android:id="@+id/test_flare_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="0dp"
+                android:layout_toRightOf="@+id/image_flare_red_circle"
+                android:text="Flare"
+                android:textColor="@color/color_red"
+                android:textSize="11sp" />
+
+
+            <ImageView
+                android:id="@+id/image_dot"
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/test_flare_text"
+                 />
+
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="0dp"
+                android:layout_toRightOf="@+id/image_dot"
+                android:text="now"
+                android:textColor="@color/grey_40"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:id="@+id/image_arrow_down"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/text_time"
+                android:background="@drawable/ic_keyboard_arrow_up_black_24dp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_notify_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_notify_top"
+            android:layout_marginTop="1dp"
+            android:paddingBottom="2dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="Flare Active"
+                android:textColor="@color/grey_24"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginLeft="16dp"
+                android:text="User is now InRange"
+                android:textColor="@color/grey_40"
+                android:textSize="11sp" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/image_end"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/photo_male_8"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="16dp"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/left_button"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:gravity="left"
+            style="@style/Widget.Compat.NotificationActionContainer"
+            android:padding="0dp"
+            android:layout_margin="0dp"
+            android:textAllCaps="true"
+            android:text="Replay"
+            android:textSize="11sp"
+            android:textColor="@color/color_red"
+            android:textAppearance="@style/TextAppearance.AppCompat.Notification.Title"/>
+
+        <Button
+            android:id="@+id/right_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Compat.NotificationActionContainer"
+            android:textAllCaps="true"
+            android:text="@string/mark_as_read"
+            android:textSize="11sp"
+            android:textColor="@color/color_red"
+            android:textAppearance="@style/TextAppearance.AppCompat.Notification.Title"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_message_buttons"
+        android:layout_below="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/text_reply_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Replay"
+            android:textAllCaps="true"
+            android:textSize="13sp"
+            android:textColor="@color/color_red"
+            style="@style/Widget.Compat.NotificationActionContainer"
+            android:textAppearance="@style/TextAppearance.AppCompat.Notification.Title"/>
+
+        <TextView
+            android:id="@+id/text_mute_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_reply_btn"
+            android:layout_marginLeft="100dp"
+            android:textAllCaps="true"
+            android:text="@string/mark_as_read"
+            android:textSize="13sp"
+            android:textColor="@color/color_red"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

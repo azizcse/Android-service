@@ -2,6 +2,7 @@ package eyesky.com.androidservice;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onBindService(View view){
+    public void onBindService(View view) {
         Intent intent = new Intent(this, BindActivity.class);
         startActivity(intent);
     }
@@ -42,12 +43,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void onStartAidlService(View view){
+    public void onStartAidlService(View view) {
         Intent intent = new Intent(this, ActivityAidl.class);
         startActivity(intent);
     }
-public void onStartMessengerBinder(View view){
+
+    public void onStartMessengerBinder(View view) {
         Intent intent = new Intent(this, ActivityMessengerBind.class);
+        startActivity(intent);
+    }
+
+
+    public void onOpenNotifivcationActivity(View view) {
+        Intent intent = new Intent(this, NotificationActivity.class);
         startActivity(intent);
     }
 
@@ -64,7 +72,7 @@ public void onStartMessengerBinder(View view){
                 .setMinimumLatency(0)
                 .build();
 
-        JobScheduler jobScheduler = (JobScheduler)getSystemService(JOB_SCHEDULER_SERVICE);
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = jobScheduler.schedule(jobInfo);
         if (resultCode == JobScheduler.RESULT_SUCCESS) {
             Log.d(TAG, "Job scheduled!");
@@ -72,7 +80,6 @@ public void onStartMessengerBinder(View view){
             Log.d(TAG, "Job not scheduled");
         }
     }
-
 
 
     @Override
