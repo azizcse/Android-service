@@ -23,8 +23,7 @@
                 android:id="@+id/image_flare_red_circle"
                 android:layout_width="8dp"
                 android:layout_height="8dp"
-                android:layout_marginTop="2dp"
-                android:background="@drawable/circle_view_red" />
+                android:layout_marginTop="2dp"/>
 
             <TextView
                 android:id="@+id/test_flare_text"
@@ -45,7 +44,7 @@
                 android:layout_marginLeft="6dp"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/test_flare_text"
-                android:background="@drawable/circle_view_grey" />
+                 />
 
 
             <TextView

@@ -29,10 +29,11 @@ public class NotificationUtil {
     private static final String KEY_NOTIFICATION_GROUP = "KEY_NOTIFICATION_GROUP";
 
 
-    public NotificationUtil() { }
+    public NotificationUtil() {
+    }
 
     public void showStandardNotification(Context context) {
-        Bitmap largeIcon = BitmapFactory.decodeResource(context.getResources(),R.drawable.me);
+        Bitmap largeIcon = BitmapFactory.decodeResource(context.getResources(), R.drawable.me);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Standard Notification")
@@ -50,7 +51,6 @@ public class NotificationUtil {
         PendingIntent archiveIntent = PendingIntent.getActivity(context,
                 ARCHIVE_INTENT_ID,
                 getMessageReplyIntent(LABEL_ARCHIVE), PendingIntent.FLAG_UPDATE_CURRENT);
-
 
 
         NotificationCompat.Action replyAction =
@@ -76,6 +76,35 @@ public class NotificationUtil {
                 push, PendingIntent.FLAG_CANCEL_CURRENT);
         notificationBuider.setFullScreenIntent(fullScreenPendingIntent, true);
         showNotification(context, notificationBuider.build(), 0);
+    }
+
+    public void showCustomContentViewNotification(Context context) {
+        RemoteViews remoteViews = createRemoteViews(context, R.layout.notification_custom_content);
+
+        Notification.Builder builder = new Notification.Builder(context)
+                                           .setSmallIcon(R.mipmap.ic_launcher)
+                                           .setAutoCancel(true);
+        if(Build.VERSION.SDK_INT >= 24) {
+            builder.setCustomContentView(remoteViews).setStyle(new Notification.DecoratedCustomViewStyle());
+        }else {
+            builder.setContent(remoteViews);
+        }
+        NotificationManager mNotificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, builder.build());
+    }
+
+    private RemoteViews createRemoteViews(Context mContext, int layoutId) {
+        RemoteViews remoteViews = new RemoteViews(mContext.getPackageName(), layoutId);
+        remoteViews.setTextViewText(R.id.text_time, "10:03");
+
+        String flareString = "Active message";
+        String flareModeString = "Custom message";
+        remoteViews.setTextViewText(R.id.text_flare_current_status, flareString);
+        remoteViews.setTextViewText(R.id.text_message, flareModeString);
+        remoteViews.setImageViewResource(R.id.image_end, R.mipmap.ic_launcher);
+
+        return remoteViews;
     }
 
     /*public void showBundledNotifications(Context context) {

@@ -33,4 +33,8 @@ public class NotificationActivity extends AppCompatActivity {
     public void onHeadsUpNotification(View view){
         notificationUtil.showStandardHeadsUpNotification(this);
     }
+
+    public void onShowCustomNotification(View view){
+        notificationUtil.showCustomContentViewNotification(this);
+    }
 }

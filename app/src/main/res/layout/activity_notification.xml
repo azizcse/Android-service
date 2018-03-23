@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Default Notification" />
+            android:onClick="onShowCustomNotification"
+            android:text="Show Custom notification" />
 
         <Button
             android:id="@+id/button_custom_content_view_notification"
