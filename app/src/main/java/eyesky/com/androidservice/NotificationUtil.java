@@ -1,10 +1,12 @@
 package eyesky.com.androidservice;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -105,6 +107,42 @@ public class NotificationUtil {
         remoteViews.setImageViewResource(R.id.image_end, R.mipmap.ic_launcher);
 
         return remoteViews;
+    }
+
+    public static final String START_FOREGROUND_ACTION = "io.left.meshim.action.startforeground";
+    public static final String STOP_FOREGROUND_ACTION = "io.left.meshim.action.stopforeground";
+    public static final int FOREGROUND_SERVICE_ID = 101;
+
+    public static final String CHANNEL_NAME = "meshim";
+    public static final String CHANNEL_ID = "notification_channel";
+
+    public void notificationChannel(Context mContext){
+        NotificationCompat.Builder builder;
+        Notification mServiceNotification;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager mNotificationManager = (NotificationManager)mContext.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+
+            mNotificationManager.createNotificationChannel(channel);
+
+            builder = new NotificationCompat.Builder(mContext, CHANNEL_ID);
+        } else {
+            //noinspection deprecation
+            builder = new NotificationCompat.Builder(mContext);
+        }
+        Resources resources = mContext.getResources();
+        mServiceNotification = builder.setAutoCancel(false)
+                .setTicker(resources.getString(R.string.app_name))
+                .setContentTitle(resources.getString(R.string.app_name))
+                .setContentText(resources.getString(R.string.app_name))
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setOngoing(true)
+                .setNumber(100)
+                .build();
+
+        NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, mServiceNotification);
     }
 
     /*public void showBundledNotifications(Context context) {
