@@ -2,4 +2,5 @@
     <string name="app_name">AndroidService</string>
     <string name="intent_service">Hello</string>
     <string name="mark_as_read">Mark as read</string>
+    <string name="reply_label">Reply</string>
 </resources>
