@@ -39,6 +39,7 @@ public class ActivityMessengerBind extends AppCompatActivity {
         public void onServiceConnected(ComponentName className, IBinder service) {
             mService = new Messenger(service);
             mBound = true;
+            keepServiceRunningInForeground();
         }
 
         public void onServiceDisconnected(ComponentName className) {
@@ -66,16 +67,44 @@ public class ActivityMessengerBind extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        bindService(new Intent(this, MessageBindService.class), mConnection,
-                Context.BIND_AUTO_CREATE);
+        keepServiceRunningInForeground();
+        serviceBindAndStart();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        keepServiceRunningInBackground();
         if (mBound) {
             unbindService(mConnection);
             mBound = false;
+        }
+    }
+
+
+    private void serviceBindAndStart(){
+        Intent intent = new Intent(this, MessageBindService.class);
+        bindService(intent, mConnection,Context.BIND_AUTO_CREATE);
+        startService(intent);
+    }
+
+    private void keepServiceRunningInBackground(){
+        Message msg = Message.obtain(null, MessageBindService.RUN_BACKGROUND, 0, 0);
+        try {
+            mService.send(msg);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void keepServiceRunningInForeground(){
+        Message msg = Message.obtain(null, MessageBindService.RUN_FOREGROUND, 0, 0);
+        try {
+            if(mService != null)
+                mService.send(msg);
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 }
